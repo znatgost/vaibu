@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vaibu — 雰囲気</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-noise"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-en">vaibu</span>
+      <span class="logo-jp">雰囲気</span>
+    </div>
+    <p class="tagline">普通の写真　→　日本の美学</p>
+  </header>
+
+  <main>
+    <!-- Upload zone -->
+    <section class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <div class="upload-inner" id="uploadInner">
+        <div class="upload-icon">⬡</div>
+        <p class="upload-text">写真をドロップ</p>
+        <p class="upload-sub">or click to browse</p>
+      </div>
+    </section>
+
+    <!-- Preview area -->
+    <section class="preview-area" id="previewArea" hidden>
+      <div class="canvas-wrap">
+        <div class="label">before</div>
+        <canvas id="canvasBefore"></canvas>
+      </div>
+      <div class="arrow">→</div>
+      <div class="canvas-wrap">
+        <div class="label">after ✦ vaibu</div>
+        <canvas id="canvasAfter"></canvas>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls" id="controls" hidden>
+      <div class="preset-row">
+        <button class="preset active" data-preset="yugen">幽玄 yugen</button>
+        <button class="preset" data-preset="sakura">桜 sakura</button>
+        <button class="preset" data-preset="shiro">城 shiro</button>
+        <button class="preset" data-preset="yoru">夜 yoru</button>
+      </div>
+
+      <div class="sliders">
+        <label>
+          <span>Grain <em id="valGrain">40</em></span>
+          <input type="range" id="slGrain" min="0" max="100" value="40" />
+        </label>
+        <label>
+          <span>Warmth <em id="valWarmth">30</em></span>
+          <input type="range" id="slWarmth" min="-100" max="100" value="30" />
+        </label>
+        <label>
+          <span>Fade <em id="valFade">15</em></span>
+          <input type="range" id="slFade" min="0" max="60" value="15" />
+        </label>
+        <label>
+          <span>Petals <em id="valPetals">20</em></span>
+          <input type="range" id="slPetals" min="0" max="60" value="20" />
+        </label>
+      </div>
+
+      <!-- Text overlay toggle -->
+      <div class="section-toggle">
+        <button class="toggle-btn" id="toggleText">
+          <span class="toggle-icon">文</span>
+          <span>text overlay</span>
+          <span class="toggle-arrow" id="toggleArrow">▸</span>
+        </button>
+      </div>
+
+      <!-- Text overlay panel -->
+      <div class="text-panel" id="textPanel" hidden>
+        <div class="text-row">
+          <input
+            type="text"
+            id="txtInput"
+            class="txt-input"
+            placeholder="例: 東京の夜 · tokyo nights"
+            maxlength="80"
+          />
+        </div>
+
+        <div class="text-options">
+          <label class="opt-label">
+            <span>Style</span>
+            <div class="style-pills">
+              <button class="pill active" data-style="jp-serif">和 serif</button>
+              <button class="pill" data-style="mono">mono</button>
+              <button class="pill" data-style="big">BIG</button>
+              <button class="pill" data-style="stamp">stamp</button>
+            </div>
+          </label>
+
+          <label class="opt-label">
+            <span>Position</span>
+            <div class="pos-grid" id="posGrid">
+              <button class="pos-btn active" data-pos="bottom-left">↙</button>
+              <button class="pos-btn" data-pos="bottom-center">↓</button>
+              <button class="pos-btn" data-pos="bottom-right">↘</button>
+              <button class="pos-btn" data-pos="top-left">↖</button>
+              <button class="pos-btn" data-pos="top-center">↑</button>
+              <button class="pos-btn" data-pos="top-right">↗</button>
+              <button class="pos-btn" data-pos="center">✛</button>
+            </div>
+          </label>
+
+          <label class="opt-label">
+            <span>Color</span>
+            <div class="color-swatches">
+              <button class="swatch active" data-color="cream" style="background:#f0e8d8;"></button>
+              <button class="swatch" data-color="white" style="background:#ffffff;"></button>
+              <button class="swatch" data-color="black" style="background:#111111;"></button>
+              <button class="swatch" data-color="sakura" style="background:#e8a0b4;"></button>
+              <button class="swatch" data-color="gold" style="background:#c8a97e;"></button>
+              <button class="swatch" data-color="teal" style="background:#7ec8c8;"></button>
+            </div>
+          </label>
+
+          <label>
+            <span>Size <em id="valTxtSize">32</em></span>
+            <input type="range" id="slTxtSize" min="12" max="120" value="32" />
+          </label>
+
+          <label>
+            <span>Opacity <em id="valTxtOpacity">90</em></span>
+            <input type="range" id="slTxtOpacity" min="10" max="100" value="90" />
+          </label>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button id="btnReset" class="btn-secondary">✕ reset</button>
+        <button id="btnDownload" class="btn-primary">↓ save photo</button>
+      </div>
+    </section>
+
+    <!-- Meme banner -->
+    <div class="meme-strip" id="memeStrip" hidden>
+      <span>普通の場所</span>
+      <span class="meme-arrow">⟶</span>
+      <span>日本 🇯🇵</span>
+      <span class="meme-arrow">⟶</span>
+      <span class="meme-wow">みんな「すごい！！」</span>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>vaibu 雰囲気 — vibes only</span>
+  </footer>
+
+  <script src="filters.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
