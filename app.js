@@ -83,7 +83,7 @@ function loadImage(file) {
 
 function drawOriginal(img) {
   // Fit to max 800px wide
-  const maxW = 800;
+  const maxW = 2000;
   let w = img.naturalWidth;
   let h = img.naturalHeight;
   if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
