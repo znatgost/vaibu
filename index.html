@@ -22,17 +22,15 @@
   </header>
 
   <main>
-    <!-- Upload zone -->
     <section class="upload-zone" id="uploadZone">
       <input type="file" id="fileInput" accept="image/*" hidden />
-      <div class="upload-inner" id="uploadInner">
+      <div class="upload-inner">
         <div class="upload-icon">⬡</div>
         <p class="upload-text">写真をドロップ</p>
         <p class="upload-sub">or click to browse</p>
       </div>
     </section>
 
-    <!-- Preview area -->
     <section class="preview-area" id="previewArea" hidden>
       <div class="canvas-wrap">
         <div class="label">before</div>
@@ -45,15 +43,21 @@
       </div>
     </section>
 
-    <!-- Controls -->
     <section class="controls" id="controls" hidden>
+
+      <!-- Presets -->
       <div class="preset-row">
         <button class="preset active" data-preset="yugen">幽玄 yugen</button>
         <button class="preset" data-preset="sakura">桜 sakura</button>
         <button class="preset" data-preset="shiro">城 shiro</button>
         <button class="preset" data-preset="yoru">夜 yoru</button>
+        <button class="preset" data-preset="matsuri">祭 matsuri</button>
+        <button class="preset" data-preset="kiri">霧 kiri</button>
+        <button class="preset" data-preset="fuyu">冬 fuyu</button>
+        <button class="preset" data-preset="ame">雨 ame</button>
       </div>
 
+      <!-- Sliders -->
       <div class="sliders">
         <label>
           <span>Grain <em id="valGrain">40</em></span>
@@ -70,6 +74,18 @@
         <label>
           <span>Petals <em id="valPetals">20</em></span>
           <input type="range" id="slPetals" min="0" max="60" value="20" />
+        </label>
+        <label>
+          <span>Contrast <em id="valContrast">5</em></span>
+          <input type="range" id="slContrast" min="-50" max="80" value="5" />
+        </label>
+        <label>
+          <span>Clarity <em id="valClarity">0</em></span>
+          <input type="range" id="slClarity" min="0" max="60" value="0" />
+        </label>
+        <label>
+          <span>Dreamy <em id="valDreamy">0</em></span>
+          <input type="range" id="slDreamy" min="0" max="80" value="0" />
         </label>
       </div>
 
@@ -93,7 +109,6 @@
             maxlength="80"
           />
         </div>
-
         <div class="text-options">
           <label class="opt-label">
             <span>Style</span>
@@ -104,10 +119,9 @@
               <button class="pill" data-style="stamp">stamp</button>
             </div>
           </label>
-
           <label class="opt-label">
             <span>Position</span>
-            <div class="pos-grid" id="posGrid">
+            <div class="pos-grid">
               <button class="pos-btn active" data-pos="bottom-left">↙</button>
               <button class="pos-btn" data-pos="bottom-center">↓</button>
               <button class="pos-btn" data-pos="bottom-right">↘</button>
@@ -117,24 +131,21 @@
               <button class="pos-btn" data-pos="center">✛</button>
             </div>
           </label>
-
           <label class="opt-label">
             <span>Color</span>
             <div class="color-swatches">
-              <button class="swatch active" data-color="cream" style="background:#f0e8d8;"></button>
-              <button class="swatch" data-color="white" style="background:#ffffff;"></button>
-              <button class="swatch" data-color="black" style="background:#111111;"></button>
+              <button class="swatch active" data-color="cream"  style="background:#f0e8d8;"></button>
+              <button class="swatch" data-color="white"  style="background:#ffffff;"></button>
+              <button class="swatch" data-color="black"  style="background:#111111;"></button>
               <button class="swatch" data-color="sakura" style="background:#e8a0b4;"></button>
-              <button class="swatch" data-color="gold" style="background:#c8a97e;"></button>
-              <button class="swatch" data-color="teal" style="background:#7ec8c8;"></button>
+              <button class="swatch" data-color="gold"   style="background:#c8a97e;"></button>
+              <button class="swatch" data-color="teal"   style="background:#7ec8c8;"></button>
             </div>
           </label>
-
           <label>
             <span>Size <em id="valTxtSize">32</em></span>
             <input type="range" id="slTxtSize" min="12" max="120" value="32" />
           </label>
-
           <label>
             <span>Opacity <em id="valTxtOpacity">90</em></span>
             <input type="range" id="slTxtOpacity" min="10" max="100" value="90" />
@@ -148,7 +159,6 @@
       </div>
     </section>
 
-    <!-- Meme banner -->
     <div class="meme-strip" id="memeStrip" hidden>
       <span>普通の場所</span>
       <span class="meme-arrow">⟶</span>
@@ -156,7 +166,6 @@
       <span class="meme-arrow">⟶</span>
       <span class="meme-wow">みんな「すごい！！」</span>
     </div>
-
   </main>
 
   <footer>
